@@ -10,4 +10,5 @@
 mkdir -p download
 mkdir -p mysql/data
 
-docker build -t xjimmyshcn/activiti .
+docker build -t mrbot/activiti:5.18.0 .
+ 
