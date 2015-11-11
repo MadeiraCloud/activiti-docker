@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #TOMCAT_VERSION="8.0.28"
-#ACTIVITI_VERSION="5.18.0"
+#ACTIVITI_VERSION="5.19.0"
 #MYSQL_CONNECTOR_JAVA_VERSION="5.1.37"
 #wget -c http://archive.apache.org/dist/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O download/catalina.tar.gz
 #wget -c https://github.com/Activiti/Activiti/releases/download/activiti-${ACTIVITI_VERSION}/activiti-${ACTIVITI_VERSION}.zip -O download/activiti.zip
@@ -10,5 +10,5 @@
 mkdir -p download
 mkdir -p mysql/data
 
-docker build -t mrbot/activiti:5.18.0 .
+docker build -t mrbot/activiti:5.19.0 .
  

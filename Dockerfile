@@ -3,7 +3,7 @@
 #
 # Pull base image.
 #FROM java:openjdk-8u66-jdk
-FROM java:openjdk-7u79-jdk
+FROM java:openjdk-7u85-jdk
 MAINTAINER Jimmy Xu "xjimmyshcn@gmail.com"
 
 RUN apt-get update
@@ -11,7 +11,7 @@ RUN apt-get update
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.0.28
-ENV ACTIVITI_VERSION 5.18.0
+ENV ACTIVITI_VERSION 5.19.0
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.37
 
 # Download package
