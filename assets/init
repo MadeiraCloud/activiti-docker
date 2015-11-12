@@ -73,13 +73,15 @@ fi
 case "${DB_TYPE}" in
   mysql) 
     DB_PORT=${DB_PORT:-3306}
-    sed 's/{{DB_PORT}}/'"${DB_PORT}"'/g' -i /assets/config/db.properties
-    sed 's/{{DB_HOST}}/'"${DB_HOST}"'/g' -i /assets/config/db.properties
-    sed 's/{{DB_NAME}}/'"${DB_NAME}"'/g' -i /assets/config/db.properties
-    sed 's/{{DB_USER}}/'"${DB_USER}"'/g' -i /assets/config/db.properties
-    sed 's/{{DB_PASS}}/'"${DB_PASS}"'/g' -i /assets/config/db.properties
-    cp -f /assets/config/db.properties /opt/tomcat/webapps/activiti-rest/WEB-INF/classes
-    cp -f /assets/config/db.properties /opt/tomcat/webapps/activiti-explorer/WEB-INF/classes
+    DB_CFG_FILE=/assets/config/db.properties
+    cp ${DB_CFG_FILE}.template ${DB_CFG_FILE}
+    sed 's/{{DB_PORT}}/'"${DB_PORT}"'/g' -i ${DB_CFG_FILE}
+    sed 's/{{DB_HOST}}/'"${DB_HOST}"'/g' -i ${DB_CFG_FILE}
+    sed 's/{{DB_NAME}}/'"${DB_NAME}"'/g' -i ${DB_CFG_FILE}
+    sed 's/{{DB_USER}}/'"${DB_USER}"'/g' -i ${DB_CFG_FILE}
+    sed 's/{{DB_PASS}}/'"${DB_PASS}"'/g' -i ${DB_CFG_FILE}
+    cp -f ${DB_CFG_FILE} /opt/tomcat/webapps/activiti-rest/WEB-INF/classes
+    cp -f ${DB_CFG_FILE} /opt/tomcat/webapps/activiti-explorer/WEB-INF/classes
     ;;
 esac
 

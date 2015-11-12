@@ -59,4 +59,6 @@ RUN cp /assets/config/tomcat/tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSIO
 
 ENV JAVA_OPTS="-Dsun.jnu.encoding=UTF-8 -Dfile.encoding=UTF-8 -server -XX:PermSize=64M -XX:MaxPermSize=256m"
 
+RUN sed -i '/exit 0/i\\/assets\/init' /etc/rc.local
 CMD ["/assets/init"]
+
