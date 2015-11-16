@@ -12,6 +12,8 @@ activiti-mysql:
 activiti-server:
   hostname: activiti-server
   container_name: activiti-server
+  volumes:
+    - ./assets:/assets
   image: mrbot/activiti:5.19.0
   links:
     - activiti-mysql:mysql

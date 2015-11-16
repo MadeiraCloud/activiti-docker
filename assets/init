@@ -84,5 +84,5 @@ case "${DB_TYPE}" in
     cp -f ${DB_CFG_FILE} /opt/tomcat/webapps/activiti-explorer/WEB-INF/classes
     ;;
 esac
-
+cp /assets/patch/activiti-rest/WEB-INF/lib/mrbot-activiti-0.1.jar /opt/tomcat/webapps/activiti-rest/WEB-INF/lib/
 /opt/tomcat/bin/catalina.sh run
