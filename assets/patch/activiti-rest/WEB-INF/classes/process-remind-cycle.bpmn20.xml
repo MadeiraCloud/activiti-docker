@@ -19,7 +19,7 @@
         <activiti:formProperty id="appservice_token" name="appservice_token" type="string"></activiti:formProperty>
         <activiti:formProperty id="cycle_time" name="cycle_time" type="string"></activiti:formProperty>
         <activiti:formProperty id="end_time" name="end_time" type="string"></activiti:formProperty>
-        <activiti:formProperty id="remind_time" name="remind_time" type="date" datePattern="yyyy-MM-dd hh:mm:ss"></activiti:formProperty>
+        <activiti:formProperty id="remind_time" name="remind_time" type="string"></activiti:formProperty>
         <activiti:formProperty id="remind_count" name="remind_count" type="long" expression="0"></activiti:formProperty>
         <activiti:formProperty id="raw_duetime" name="raw_duetime" type="string"></activiti:formProperty>
       </extensionElements>
@@ -65,7 +65,7 @@
         <omgdc:Bounds height="55.0" width="105.0" x="510.0" y="135.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="boundarytimer_cycle" id="BPMNShape_boundarytimer_cycle">
-        <omgdc:Bounds height="31.000000000000014" width="31.0" x="213.93558274092288" y="99.13951129856513"></omgdc:Bounds>
+        <omgdc:Bounds height="31.0" width="31.0" x="213.93558274092288" y="99.13951129856511"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="boundarytimer_end" id="BPMNShape_boundarytimer_end">
         <omgdc:Bounds height="31.0" width="31.0" x="198.9352250460974" y="53.18825831796754"></omgdc:Bounds>
@@ -79,7 +79,7 @@
         <omgdi:waypoint x="121.0" y="102.5"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-05445572-1DB1-4DED-802B-DA2F9674EEE7" id="BPMNEdge_sid-05445572-1DB1-4DED-802B-DA2F9674EEE7">
-        <omgdi:waypoint x="244.34949745197343" y="118.86149519141811"></omgdi:waypoint>
+        <omgdi:waypoint x="244.34949745197343" y="118.86149519141809"></omgdi:waypoint>
         <omgdi:waypoint x="346.0" y="147.63776170313315"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-96FF26D6-B341-485F-BEBE-8DB7CED77798" id="BPMNEdge_sid-96FF26D6-B341-485F-BEBE-8DB7CED77798">
