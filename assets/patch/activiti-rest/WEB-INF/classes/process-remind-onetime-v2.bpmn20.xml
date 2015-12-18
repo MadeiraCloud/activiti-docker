@@ -18,6 +18,11 @@
         <activiti:formProperty id="receiver_detail_json" name="receiver_detail_json" type="string"></activiti:formProperty>
         <activiti:formProperty id="appservice_api" name="appservice_api" type="string"></activiti:formProperty>
         <activiti:formProperty id="appservice_token" name="appservice_token" type="string"></activiti:formProperty>
+        <activiti:formProperty id="duetime_type" name="duetime_type" type="string"></activiti:formProperty>
+        <activiti:formProperty id="cycle_time" name="cycle_time" type="string"></activiti:formProperty>
+        <activiti:formProperty id="raw_duetime" name="raw_duetime" type="string"></activiti:formProperty>
+        <activiti:formProperty id="remind_count" name="remind_count" type="string"></activiti:formProperty>
+        <activiti:formProperty id="remind_time" name="remind_time" type="string"></activiti:formProperty>
       </extensionElements>
     </startEvent>
     <sequenceFlow id="flow5" sourceRef="startevent1" targetRef="usertask-wait-remind"></sequenceFlow>
@@ -30,7 +35,9 @@
     <sequenceFlow id="flow8" sourceRef="servicetask-finish" targetRef="endevent1"></sequenceFlow>
     <serviceTask id="servicetask-remind" name="微信提醒" activiti:class="com.mrbot.activiti.WeChatDelegate"></serviceTask>
     <sequenceFlow id="flow6" sourceRef="boundarytimer1" targetRef="servicetask-remind"></sequenceFlow>
-    <sequenceFlow id="sid-2D5E2AD6-C3E2-4E34-979A-AA2D53F794C3" sourceRef="servicetask-remind" targetRef="servicetask-finish"></sequenceFlow>
+    <serviceTask id="servicetask-log" name="记录提醒日志" activiti:class="com.mrbot.activiti.AppServiceDelegate"></serviceTask>
+    <sequenceFlow id="sid-2D5E2AD6-C3E2-4E34-979A-AA2D53F794C3" sourceRef="servicetask-remind" targetRef="servicetask-log"></sequenceFlow>
+    <sequenceFlow id="sid-C2A5654F-1714-402A-9E01-440251DDF26C" sourceRef="servicetask-log" targetRef="servicetask-finish"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_process-remind-onetime-v2">
     <bpmndi:BPMNPlane bpmnElement="process-remind-onetime-v2" id="BPMNPlane_process-remind-onetime-v2">
@@ -38,35 +45,42 @@
         <omgdc:Bounds height="55.0" width="108.0" x="105.0" y="65.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="28.0" width="28.0" x="585.0" y="78.5"></omgdc:Bounds>
+        <omgdc:Bounds height="28.0" width="28.0" x="720.0" y="78.5"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
         <omgdc:Bounds height="30.0" width="30.0" x="15.0" y="77.5"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="boundarytimer1" id="BPMNShape_boundarytimer1">
-        <omgdc:Bounds height="31.0" width="31.0" x="183.18129818502848" y="49.32751573938803"></omgdc:Bounds>
+        <omgdc:Bounds height="31.0" width="31.0" x="152.18129818502848" y="18.327515739388033"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask-finish" id="BPMNShape_servicetask-finish">
-        <omgdc:Bounds height="55.0" width="105.0" x="420.0" y="65.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="555.0" y="65.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask-remind" id="BPMNShape_servicetask-remind">
-        <omgdc:Bounds height="55.0" width="105.0" x="255.0" y="65.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="115.0" x="250.0" y="65.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask-log" id="BPMNShape_servicetask-log">
+        <omgdc:Bounds height="55.0" width="115.0" x="405.0" y="65.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
         <omgdi:waypoint x="45.0" y="92.5"></omgdi:waypoint>
         <omgdi:waypoint x="105.0" y="92.5"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C2A5654F-1714-402A-9E01-440251DDF26C" id="BPMNEdge_sid-C2A5654F-1714-402A-9E01-440251DDF26C">
+        <omgdi:waypoint x="520.0" y="92.5"></omgdi:waypoint>
+        <omgdi:waypoint x="555.0" y="92.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-2D5E2AD6-C3E2-4E34-979A-AA2D53F794C3" id="BPMNEdge_sid-2D5E2AD6-C3E2-4E34-979A-AA2D53F794C3">
-        <omgdi:waypoint x="360.0" y="92.5"></omgdi:waypoint>
-        <omgdi:waypoint x="420.0" y="92.5"></omgdi:waypoint>
+        <omgdi:waypoint x="365.0" y="92.5"></omgdi:waypoint>
+        <omgdi:waypoint x="405.0" y="92.5"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
-        <omgdi:waypoint x="212.63971632171348" y="71.56640015162301"></omgdi:waypoint>
-        <omgdi:waypoint x="255.0" y="92.01721718419337"></omgdi:waypoint>
+        <omgdi:waypoint x="181.97389492052716" y="39.82515515472573"></omgdi:waypoint>
+        <omgdi:waypoint x="250.0" y="68.37112595674279"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
-        <omgdi:waypoint x="525.0" y="92.5"></omgdi:waypoint>
-        <omgdi:waypoint x="585.0" y="92.5"></omgdi:waypoint>
+        <omgdi:waypoint x="660.0" y="92.5"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="92.5"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
